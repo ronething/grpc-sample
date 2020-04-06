@@ -13,6 +13,13 @@ import (
 	"github.com/ronething/grpc-sample/service1"
 )
 
+type HelloService struct{}
+
+func (p *HelloService) Hello(request string, reply *string) error {
+	*reply = "hello: " + request
+	return nil
+}
+
 func main() {
 	service1.RegisterHelloService(new(service1.HelloService))
 
